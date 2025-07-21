@@ -342,7 +342,7 @@
     </xs:complexType>
     <xs:complexType name="Document">
         <xs:sequence>
-            <xs:element name="CdtrPmtActvtnReq" type="CreditorPaymentActivationRequestV08"/>
+            <xs:element minOccurs="1" name="CdtrPmtActvtnReq" type="CreditorPaymentActivationRequestV08"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="Document12">
@@ -353,7 +353,7 @@
             <xs:element maxOccurs="1" minOccurs="0" name="Nm" type="Max140Text"/>
             <xs:element maxOccurs="1" minOccurs="0" name="LangCd" type="LanguageCode"/>
             <xs:element name="Frmt" type="DocumentFormat1Choice"/>
-            <xs:element maxOccurs="1" minOccurs="0" name="FileNm" type="Max140Text"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="FileNm" type="Max140Text"/>
             <xs:element maxOccurs="1" minOccurs="0" name="DgtlSgntr" type="PartyAndSignature3"/>
             <xs:element name="Nclsr" type="Max10MbBinary"/>
         </xs:sequence>

@@ -3,7 +3,9 @@ const fs = require('fs');
 const data = fs.readFileSync('tags.txt', 'utf8');
 const lines = data.split(/\r?\n/).filter(line => line.trim() !== '');
 
-let xsdData = fs.readFileSync('pain.013.001.08.xsd', 'utf8');
+const filename = 'pain.013.001.08.xsd';
+
+let xsdData = fs.readFileSync(filename, 'utf8');
 let xsdLines = xsdData.split(/\r?\n/);
 
 let modified = false;
@@ -70,11 +72,12 @@ for (const tagPath of lines) {
     if (found) {
         console.log(`${tagPath}: ${lastLineNumber} -- minOccurs=${minOccurs} Added`);
     } else {
-        console.error(`Could not find tag path: ${tagPath}`);
+        console.error(`${tagPath}: Not Found`);
     }
 }
 
 if (modified) {
-    fs.writeFileSync('pain.013.001.08.xsd', xsdLines.join('\n'));
-    console.log('File updated successfully');
+    const updatedFilename = `Updated ${filename}`;
+    fs.writeFileSync(updatedFilename, xsdLines.join('\n'));
+    console.log(`\n\n${updatedFilename} created successfully`);
 }
