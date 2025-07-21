@@ -1,4 +1,9 @@
-Document.GrpHdr.CdtrPmtActvtnReq
-Document.GrpHdr.CdtrPmtActvtnReq.PmtInf
+Document.CdtrPmtActvtnReq
+Document.CdtrPmtActvtnReq.PmtInf
+Document.CdtrPmtActvtnReq.GrpHdr
+Document.CdtrPmtActvtnReq.PmtInf.Dbtr
+Document.CdtrPmtActvtnReq.PmtInf.CdtTrfTx
+Document.CdtrPmtActvtnReq.PmtInf.CdtTrfTx.Cdtr
+Document.CdtrPmtActvtnReq.PmtInf.CdtTrfTx.Amt
+Document.CdtrPmtActvtnReq.PmtInf.CdtTrfTx.RmtInf
 Document.abc
-Document.GrpHdr.CdtrPmtActvtnReq.PmtInf.CdtTrfTx.NclsdFile.FileNm

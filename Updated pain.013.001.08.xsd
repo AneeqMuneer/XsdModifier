@@ -88,7 +88,7 @@
     </xs:simpleType>
     <xs:complexType name="AmountOrRate1Choice">
         <xs:choice>
-            <xs:element name="Amt" type="ActiveCurrencyAndAmount"/>
+            <xs:element minOccurs="1" name="Amt" type="ActiveCurrencyAndAmount"/>
             <xs:element name="Rate" type="PercentageRate"/>
         </xs:choice>
     </xs:complexType>
@@ -264,7 +264,7 @@
             <xs:element maxOccurs="1" minOccurs="0" name="IntrmyAgt2" type="BranchAndFinancialInstitutionIdentification6"/>
             <xs:element maxOccurs="1" minOccurs="0" name="IntrmyAgt3" type="BranchAndFinancialInstitutionIdentification6"/>
             <xs:element name="CdtrAgt" type="BranchAndFinancialInstitutionIdentification6"/>
-            <xs:element name="Cdtr" type="PartyIdentification135"/>
+            <xs:element minOccurs="1" name="Cdtr" type="PartyIdentification135"/>
             <xs:element maxOccurs="1" minOccurs="0" name="CdtrAcct" type="CashAccount38"/>
             <xs:element maxOccurs="1" minOccurs="0" name="UltmtCdtr" type="PartyIdentification135"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" name="InstrForCdtrAgt" type="InstructionForCreditorAgent3"/>
@@ -272,14 +272,14 @@
             <xs:element maxOccurs="10" minOccurs="0" name="RgltryRptg" type="RegulatoryReporting3"/>
             <xs:element maxOccurs="1" minOccurs="0" name="Tax" type="TaxInformation8"/>
             <xs:element maxOccurs="10" minOccurs="0" name="RltdRmtInf" type="RemittanceLocation7"/>
-            <xs:element maxOccurs="1" minOccurs="0" name="RmtInf" type="RemittanceInformation16"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="RmtInf" type="RemittanceInformation16"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" name="NclsdFile" type="Document12"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" name="SplmtryData" type="SupplementaryData1"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="CreditorPaymentActivationRequestV08">
         <xs:sequence>
-            <xs:element name="GrpHdr" type="GroupHeader78"/>
+            <xs:element minOccurs="1" name="GrpHdr" type="GroupHeader78"/>
             <xs:element maxOccurs="unbounded" minOccurs="1" name="PmtInf" type="PaymentInstruction35"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" name="SplmtryData" type="SupplementaryData1"/>
         </xs:sequence>
@@ -353,7 +353,7 @@
             <xs:element maxOccurs="1" minOccurs="0" name="Nm" type="Max140Text"/>
             <xs:element maxOccurs="1" minOccurs="0" name="LangCd" type="LanguageCode"/>
             <xs:element name="Frmt" type="DocumentFormat1Choice"/>
-            <xs:element maxOccurs="1" minOccurs="1" name="FileNm" type="Max140Text"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="FileNm" type="Max140Text"/>
             <xs:element maxOccurs="1" minOccurs="0" name="DgtlSgntr" type="PartyAndSignature3"/>
             <xs:element name="Nclsr" type="Max10MbBinary"/>
         </xs:sequence>
@@ -908,7 +908,7 @@
             <xs:element name="ReqdExctnDt" type="DateAndDateTime2Choice"/>
             <xs:element maxOccurs="1" minOccurs="0" name="XpryDt" type="DateAndDateTime2Choice"/>
             <xs:element maxOccurs="1" minOccurs="0" name="PmtCond" type="PaymentCondition1"/>
-            <xs:element name="Dbtr" type="PartyIdentification135"/>
+            <xs:element minOccurs="1" name="Dbtr" type="PartyIdentification135"/>
             <xs:element maxOccurs="1" minOccurs="0" name="DbtrAcct" type="CashAccount38"/>
             <xs:element name="DbtrAgt" type="BranchAndFinancialInstitutionIdentification6"/>
             <xs:element maxOccurs="1" minOccurs="0" name="UltmtDbtr" type="PartyIdentification135"/>
