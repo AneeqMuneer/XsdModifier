@@ -3,14 +3,17 @@ const fs = require('fs');
 const data = fs.readFileSync('tags.txt', 'utf8');
 const lines = data.split(/\r?\n/).filter(line => line.trim() !== '');
 
-const xsdData = fs.readFileSync('pain.013.001.08.xsd', 'utf8');
-const xsdLines = xsdData.split(/\r?\n/);
+let xsdData = fs.readFileSync('pain.013.001.08.xsd', 'utf8');
+let xsdLines = xsdData.split(/\r?\n/);
+
+let modified = false;
 
 for (const tagPath of lines) {
     const tagParts = tagPath.split('.');
     let currentTag = 'Document';
     let found = false;
     let lastLineNumber = null;
+    let minOccurs = null;
 
     for (let tagIndex = 0; tagIndex < tagParts.length; tagIndex++) {
         found = false;
@@ -19,6 +22,18 @@ for (const tagPath of lines) {
             const line = xsdLines[i];
             if (line.includes('<xs:element') && line.includes(`name="${currentTag}"`)) {
                 lastLineNumber = i + 1;
+                
+                if (tagIndex === tagParts.length - 1) {
+                    const minOccursMatch = line.match(/minOccurs="([^"]+)"/);
+                    if (minOccursMatch) {
+                        xsdLines[i] = line.replace(/minOccurs="[^"]+"/, 'minOccurs="1"');
+                        modified = true;
+                    } else {
+                        xsdLines[i] = line.replace('<xs:element', '<xs:element minOccurs="1"');
+                        modified = true;
+                    }
+                    minOccurs = "1";
+                }
                 
                 const typeMatch = line.match(/type="([^"]+)"/);
                 if (typeMatch) {
@@ -53,6 +68,13 @@ for (const tagPath of lines) {
     }
 
     if (found) {
-        console.log(`${tagPath}: ${lastLineNumber}`);
+        console.log(`${tagPath}: ${lastLineNumber} -- minOccurs=${minOccurs} Added`);
+    } else {
+        console.error(`Could not find tag path: ${tagPath}`);
     }
+}
+
+if (modified) {
+    fs.writeFileSync('pain.013.001.08.xsd', xsdLines.join('\n'));
+    console.log('File updated successfully');
 }

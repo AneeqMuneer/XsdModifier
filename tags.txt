@@ -1,2 +1,4 @@
 Document.GrpHdr.CdtrPmtActvtnReq
 Document.GrpHdr.CdtrPmtActvtnReq.PmtInf
+Document.abc
+Document.GrpHdr.CdtrPmtActvtnReq.PmtInf.CdtTrfTx.NclsdFile.FileNm
