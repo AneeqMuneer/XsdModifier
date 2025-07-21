@@ -5,7 +5,7 @@ const lines = data.split(/\r?\n/).filter(line => line.trim() !== '');
 
 const filename = 'pain.013.001.08.xsd';
 
-let xsdData = fs.readFileSync(filename, 'utf8');
+let xsdData = fs.readFileSync(`./XSDs/${filename}`, 'utf8');
 let xsdLines = xsdData.split(/\r?\n/);
 
 let modified = false;
@@ -78,6 +78,6 @@ for (const tagPath of lines) {
 
 if (modified) {
     const updatedFilename = `Updated ${filename}`;
-    fs.writeFileSync(updatedFilename, xsdLines.join('\n'));
+    fs.writeFileSync(`./UpdatedXSDs/${updatedFilename}`, xsdLines.join('\n'));
     console.log(`\n\n${updatedFilename} created successfully`);
 }
